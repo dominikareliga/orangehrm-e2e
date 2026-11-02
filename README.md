@@ -71,4 +71,4 @@ A new area is a folder of page objects, one domain on `App`, its routes, and a f
 
 ## Known limitation
 
-The demo is public and resets itself, so a test can fail for reasons outside this code. Unique data, two workers and one CI retry are the mitigations.
+The demo is public and resets itself, so a test can fail for reasons outside this code. Unique data, two workers, one CI retry and longer timeouts in CI are the mitigations.

@@ -11,8 +11,8 @@ export default defineConfig({
   // The target is a public demo shared with everyone on the internet; two
   // workers is fast enough and keeps our load on it polite.
   workers: 2,
-  timeout: 60_000,
-  expect: { timeout: 10_000 },
+  timeout: isCI ? 120_000 : 60_000,
+  expect: { timeout: isCI ? 20_000 : 10_000 },
   reporter: [
     ['list'],
     ['html', { open: 'never' }],
@@ -20,7 +20,7 @@ export default defineConfig({
   ],
   use: {
     baseURL: config.baseUrl,
-    actionTimeout: 15_000,
+    actionTimeout: isCI ? 30_000 : 15_000,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
