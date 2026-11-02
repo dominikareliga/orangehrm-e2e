@@ -7,7 +7,8 @@ export class AddEmployeePage extends BasePage {
   readonly lastNameField = this.page.getByRole('textbox', { name: 'Last Name' });
   readonly employeeIdField = this.page.locator('.oxd-input-group', { hasText: 'Employee Id' }).getByRole('textbox');
   readonly saveButton = this.page.getByRole('button', { name: 'Save' });
-  readonly requiredErrors = this.page.getByText('Required', { exact: true });
+  readonly firstNameError = this.page.locator('.--name-grouped-field > .oxd-input-group', { has: this.firstNameField }).getByText('Required');
+  readonly lastNameError = this.page.locator('.--name-grouped-field > .oxd-input-group', { has: this.lastNameField }).getByText('Required');
 
   async goto() {
     await this.page.goto(routes.addEmployee);

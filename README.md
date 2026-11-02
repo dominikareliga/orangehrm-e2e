@@ -29,7 +29,7 @@ Additional regression scenarios:
 
 - **Required fields** (`createEmployee.spec.ts`): no employee without a first and last name.
 - **Search by employee id** (`searchEmployee.spec.ts`): the id filter returns only that employee.
-- **Delete an employee** (`deleteEmployee.spec.ts`): the destructive path, confirmed through the API.
+- **Delete an employee** (`deleteEmployee.spec.ts`): the destructive path.
 
 ## Test organization
 
@@ -55,7 +55,7 @@ Every test owns its data: a "Test Employee" with a random id, created through th
 
 ## Assertions
 
-Web-first `expect` on what the user sees: toasts, headings, rows, field values. No fixed waits. Where "saved" or "deleted" matters, the test reloads the page or reads the record back through the API.
+Web-first `expect` on what the user sees: toasts, headings, rows, field values. No fixed waits. Where "saved" matters, the test reloads the page.
 
 ## Reporting
 

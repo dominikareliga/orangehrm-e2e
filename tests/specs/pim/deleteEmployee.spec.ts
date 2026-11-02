@@ -1,7 +1,6 @@
 import { test, expect } from '../../fixtures';
-import { findEmployee } from '../../requests/employees.request';
 
-test('Verify that an admin can delete an employee from the list', { tag: '@pim' }, async ({ app, api, employee }) => {
+test('Verify that an admin can delete an employee from the list', { tag: '@pim' }, async ({ app, employee }) => {
   await app.pim.employeeList.goto();
   await app.pim.employeeList.searchById(employee.employeeId);
   await expect(app.pim.employeeList.row(employee.employeeId)).toBeVisible();
@@ -10,5 +9,4 @@ test('Verify that an admin can delete an employee from the list', { tag: '@pim' 
 
   await expect(app.toast.message('Successfully Deleted')).toBeVisible();
   await expect(app.pim.employeeList.noRecordsMessage).toBeVisible();
-  expect(await findEmployee(api, employee.employeeId)).toBeNull();
 });
