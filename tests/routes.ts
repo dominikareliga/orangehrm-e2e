@@ -7,4 +7,5 @@ export const routes = {
   addEmployee: `${APP}/pim/addEmployee`,
   personalDetails: (employeeNumber: number) => `${APP}/pim/viewPersonalDetails/empNumber/${employeeNumber}`,
   employeesApi: `${APP}/api/v2/pim/employees`,
+  leaveList: `${APP}/leave/viewLeaveList`,
 };
