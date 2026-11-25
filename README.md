@@ -13,6 +13,21 @@ npm run test:ui        # pick tests and step through them
 npm run report         # open the HTML report of the last run
 ```
 
+To run a single spec in headed Chromium:
+
+```bash
+npx playwright test tests/specs/pim/createEmployee.spec.ts --project=chromium --headed
+```
+
+Run, filter, and debug tests:
+
+```bash
+npm run test:pim -- --headed    # run all PIM tests with the browser visible
+npx playwright test tests/specs/pim/createEmployee.spec.ts --project=chromium --headed --grep "Verify that an admin can create an employee"
+npx playwright test tests/specs/pim/createEmployee.spec.ts --project=chromium --debug  # step through a spec
+npx playwright test --list      # list tests without running them
+```
+
 Credentials default to the demo's public ones; copy `.env.example` to `.env` to override them.
 
 ## What is tested
