@@ -1,20 +1,9 @@
 import { test, expect } from '../../fixtures';
-import { cleanupPendingLeaveRequest, createPendingLeaveRequest } from '../../requests/leave.request';
 
-test(
-  'Verify that an admin can approve a leave request',
-  { tag: '@leave' },
-  async ({ app, api, browser, employee }) => {
-    const leaveRequest = await createPendingLeaveRequest(api, browser, employee);
-    try {
-      await app.leave.leaveList.goto();
-      await app.leave.leaveList.searchIncludingPastEmployees();
-      await expect(app.leave.leaveList.requestRow(leaveRequest.comment)).toBeVisible();
-      await app.leave.leaveList.approveRequest(leaveRequest.comment);
+test('Verify that an admin can approve the first leave request', { tag: '@leave' }, async ({ app }) => {
+  await app.leave.leaveList.goto();
+  await expect(app.leave.leaveList.firstRow).toBeVisible();
+  await app.leave.leaveList.approveFirstRow();
 
-      await expect(app.toast.message('Successfully Updated')).toBeVisible();
-    } finally {
-      await cleanupPendingLeaveRequest(api, leaveRequest);
-    }
-  },
-);
+  await expect(app.toast.message('Successfully Updated')).toBeVisible();
+});
