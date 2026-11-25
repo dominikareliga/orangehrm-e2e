@@ -10,7 +10,7 @@ export default defineConfig({
   retries: isCI ? 1 : 0,
   // The target is a public demo shared with everyone on the internet; two
   // workers is fast enough and keeps our load on it polite.
-  workers: 2,
+  workers: 1,
   timeout: isCI ? 120_000 : 60_000,
   expect: { timeout: isCI ? 20_000 : 10_000 },
   reporter: [

@@ -2,11 +2,13 @@ import type { Page } from '@playwright/test';
 import { AuthDomain } from './auth/auth.domain';
 import { PimDomain } from './pim/pim.domain';
 import { Toast } from './components/toast.component';
+import { LeaveDomain } from './leave/leave.domain';
 
 // Single entry point to all page objects, e.g. app.pim.employeeList.
 export class App {
   private authDomain?: AuthDomain;
   private pimDomain?: PimDomain;
+  private leaveDomain?: LeaveDomain;
   private toastComponent?: Toast;
   private readonly page: Page;
 
@@ -22,7 +24,15 @@ export class App {
     return (this.pimDomain ??= new PimDomain(this.page));
   }
 
+  get leave(): LeaveDomain {
+    return (this.leaveDomain ??= new LeaveDomain(this.page));
+  }
+
   get toast(): Toast {
     return (this.toastComponent ??= new Toast(this.page));
+  }
+
+  async pause() {
+    await this.page.pause();
   }
 }
